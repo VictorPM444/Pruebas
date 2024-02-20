@@ -1,0 +1,270 @@
+{% include 'includeFases.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+
+<body>
+
+    <!-- Breadcumb Area -->
+    <div class="breadcumb_area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <h5>Cart</h5>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Cart</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcumb Area -->
+
+    <!-- Cart Area -->
+    <div class="cart_area section_padding_100_70 clearfix">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-12">
+                    <div class="cart-table">
+                        <div class="table-responsive">
+
+                            <form id="search-form">
+                                <input type="text" id="search-input" placeholder="Buscar">
+                            </form>
+
+                            <table id="usuarios" class="table table-bordered mb-30">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido Paterno</th>
+                                        <th scope="col">Apellido Materno</th>
+                                        <th scope="col">Correo Electronico</th>
+                                        <th scope="col">Numero Telefonico</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for usuario in usuarios %}
+                                    <tr>
+                                        <td>{{ usuario.idUsuario }}</td>
+                                        <td>{{ usuario.nombreUsuario }}</td>
+                                        <td>{{ usuario.apellidoPaterno }}</td>
+                                        <td>{{ usuario.apellidoMaterno }}</td>
+                                        <td>{{ usuario.correoElectronico }}</td>
+                                        <td>{{ usuario.numeroTelefonico }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                            <script>
+                                $(document).ready(function() {
+                                    // Función para filtrar los registros de la tabla por nombre de usuario
+                                    $("#search-input").on("keyup", function() {
+                                        var searchText = $(this).val().toLowerCase();
+                                        $("#usuarios tbody tr").filter(function() {
+                                            var usuarioNombre = $(this).find("td:eq(1)").text().toLowerCase(); // 1 es el índice de la columna 'nombreUsuario'
+                                            $(this).toggle(usuarioNombre.indexOf(searchText) > -1);
+                                        });
+                                    });
+                                });
+                            </script>
+                            
+                            <!-- Agrega un id a tu botón -->
+                            <button id="excelButton">Descargar Excel</button>
+
+
+                            <script>
+                                document.getElementById('excelButton').addEventListener('click', function () {
+                                    exportToExcel('usuarios', 'TablaExcel');
+                                });
+
+                                function exportToExcel(tableID, filename = '') {
+                                    var downloadLink;
+                                    var dataType = 'application/vnd.ms-excel';
+                                    var tableSelect = document.getElementById(tableID);
+                                    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+                                    // Especifica el nombre del archivo
+                                    filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+                                    // Crea el elemento de enlace de descarga
+                                    downloadLink = document.createElement("a");
+
+                                    document.body.appendChild(downloadLink);
+
+                                    if (navigator.msSaveOrOpenBlob) {
+                                        var blob = new Blob(['\ufeff', tableHTML], {
+                                            type: dataType
+                                        });
+                                        navigator.msSaveOrOpenBlob(blob, filename);
+                                    } else {
+                                        // Crea un enlace al archivo
+                                        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                                        // Establece el nombre del archivo
+                                        downloadLink.download = filename;
+
+                                        // Dispara la función
+                                        downloadLink.click();
+                                    }
+                                }
+                            </script>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="cart-apply-coupon mb-30">
+                        <h6>Have a Coupon?</h6>
+                        <p>Enter your coupon code here &amp; get awesome discounts!</p>
+                        <!-- Form -->
+                        <div class="coupon-form">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Enter Your Coupon Code">
+                                <button type="submit" class="btn btn-primary">Apply Coupon</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5">
+                    <div class="cart-total-area mb-30">
+                        <h5 class="mb-3">Cart Totals</h5>
+                        <div class="table-responsive">
+                            <table class="table mb-3">
+                                <tbody>
+                                    <tr>
+                                        <td>Sub Total</td>
+                                        <td>$56.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>$10.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VAT (10%)</td>
+                                        <td>$5.60</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>$71.60</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="checkout-1.html" class="btn btn-primary d-block">Proceed To Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Area End -->
+
+    <!-- Footer Area -->
+    <footer class="footer_area section_padding_70_0" >
+        <div class="container" style="height: 220px; margin-bottom: 40px;">
+            <div class="row">
+                <!-- Single Footer Area -->
+                <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3" >
+                    <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                        <div class="footer_heading mb-4">
+                            <h6>Contacto</h6>
+                        </div>
+                        <ul class="footer_content">
+                            <li><span>Direcccion:</span> Lords, London, UK - 1259</li>
+                            <li><span>Telefono:</span> 002 63695 24624</li>
+                            <li><span>Correo:</span> support@example.com</li>
+                        </ul>
+                        <div class="footer_social_area mt-15">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Footer Area -->
+                <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                    <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                        <div class="footer_heading mb-4">
+                            <h6>Informacion</h6>
+                        </div>
+                        <ul class="footer_widget_menu">
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Tu cuenta</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Tu carrito</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Politicas de devolucion</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Informacion de entrega</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Single Footer Area -->
+                <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                    <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                        <div class="footer_heading mb-4">
+                            <h6>Cuenta</h6>
+                        </div>
+                        <ul class="footer_widget_menu">
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Recuperacion de contraseña</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Ayuda</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Metodos de pago</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Politicas de privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer_bottom_area" >
+            <div class="container">
+                <div class="row align-items-center" >
+                    <!-- Copywrite -->
+                    <div class="col-12 col-md-6">
+                        <div class="copywrite_text">
+                            <p>Creado por VICSHOP <i class="fa fa-heart" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'js/default/classy-nav.min.js'%}"></script>
+    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'js/default/scrollup.js'%}"></script>
+    <script src="{% static 'js/waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js'%}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+    <script src="{% static 'js/jquery-ui.min.js'%}"></script>
+    <script src="{% static 'js/jarallax.min.js'%}"></script>
+    <script src="{% static 'js/jarallax-video.min.js'%}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js'%}"></script>
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/default/active.js'%}"></script>
+
+</body>
+
+
+<!-- Mirrored from designing-world.com/bigshop-2.3.0/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 08:04:41 GMT -->
+
+</html>

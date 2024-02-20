@@ -1,0 +1,479 @@
+{% include 'includeFases.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Agrega la referencia al conjunto de iconos FontAwesome (opcional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <link href="{% static 'css/sweetalert2.css'%}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/sweetalert2Dos.css'%}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <!-- Breadcumb Area -->
+    <div class="breadcumb_area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <h5>Productos</h5>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Producto</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcumb Area -->
+
+    <!-- My Account Area -->
+    <section class="my-account-area section_padding" >
+        <div class="container" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-account-content mb-50">
+                        <h5 class="mb-3">Registrar Productos</h5>
+
+                        <form action="/formularioProducto/" method="post"   enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-12 align-center">
+                                    {{ mensaje }}
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="nombreProducto">Nombre Producto</label>
+                                        <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Tenis Travis Scoot 3" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="descripcionProducto">Descripcion Producto</label>
+                                        <input type="text" class="form-control" id="descripcionProducto" name="descripcionProducto" placeholder="Modelo de tela inverso" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="precioProducto">Precio producto</label>
+                                        <input type="number" class="form-control" id="precioProducto" name="precioProducto" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="linkStripe">Link Stripe</label>
+                                        <input type="text" class="form-control" id="linkStripe" name="linkStripe" placeholder="httpsnnbfjkdkj" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-4 col-lg-4" >
+                                    <div class="form-group">
+                                        <label for="marca">Marca:</label>
+                                        <p>
+                                        <select id="marca" name="marca" required>
+                                            <option value="" disabled selected>Selecciona una marca</option>
+                                            {% for marca in marcas %}
+                                            <option value="{{ marca.idMarca }}">{{ marca.nombreMarca}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-4 col-lg-4" >
+                                    <div class="form-group">
+                                        <label for="color">Color:</label>
+                                        <p>
+                                        <select id="color" name="color" required>
+                                            <option value="" disabled selected>Selecciona un color</option>
+                                            {% for color in colores %}
+                                            <option value="{{ color.idColor }}">{{ color.nombreColor}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-4 col-lg-4" >
+                                    <div class="mb-3">
+                                        <label for="talla">Talla:</label>
+                                        <p>
+                                        <select id="talla" name="talla" required>
+                                            <option value="" disabled selected>Selecciona una talla</option>
+                                            {% for talla in tallas %}
+                                            <option value="{{ talla.idTalla }}">{{ talla.nombreTalla}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p></p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="imagen">Imagen:</label>
+                                        <input type="file" class="form-control-file" id="imagen" name="imagen" required>
+                                    </div>
+                                </div>                                
+
+                                <div class="col-6 text-center">
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary" name="Guardar">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- My Account Area -->
+
+    <!-- My Account Area -->
+    <section class="my-account-area section_padding_50_70">
+        <div class="container" style="height: 700px; margin-top: 20px;">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="cart-table wishlist-table">
+                        <div class="table-responsive">
+                            <table id="TablaProducto" class="hover table table-sm table-centered table-hover table-borderless mb-0" >
+                                <thead class="border-top border-bottom bg-light-subtle border-light">
+                                    <tr>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Stripe</th>
+                                        <th scope="col">Color</th>
+                                        <th scope="col">Marca</th>
+                                        <th scope="col">Talla</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Editar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for producto in productos %}
+                                        <tr>
+                                            <td>{{ producto.nombreProducto}}</td>
+                                            <td>{{ producto.descripcionProducto}}</td>
+                                            <td>{{ producto.precioProducto}}</td>
+                                            <td>{{ producto.linkStripe}}</td>
+                                            <td>{{ producto.fk_color.nombreColor}}</td>
+                                            <td>{{ producto.fk_marca.nombreMarca}}</td>
+                                            <td>{{ producto.fk_talla.nombreTalla}}</td>
+                                            <td>
+                                                <img src="{% static 'img/' %}{{ producto.imagen }}" alt="{{ producto.nombreProducto }}" style="max-width: 100px; max-height: 100px;">
+                                            </td>
+                                            <td>
+                                                <a href="#" class="btn btn-info"><i class="fas fa-pencil-alt" style="color: #f0f0f0;"   onclick="editarProducto('{{ producto.idProducto }}', '{{ producto.nombreProducto}}', '{{ producto.descripcionProducto}}', '{{ producto.precioProducto}}', '{{ producto.linkStripe}}')"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <!-- My Account Area -->
+
+    <!-- Footer Area -->
+    <footer class="footer_area section_padding_70_0" >
+        <div class="container" style="height: 220px; margin-bottom: 40px;">
+            <div class="row">
+                <!-- Single Footer Area -->
+                <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3" >
+                    <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                        <div class="footer_heading mb-4">
+                            <h6>Contacto</h6>
+                        </div>
+                        <ul class="footer_content">
+                            <li><span>Direcccion:</span> Lords, London, UK - 1259</li>
+                            <li><span>Telefono:</span> 002 63695 24624</li>
+                            <li><span>Correo:</span> support@example.com</li>
+                        </ul>
+                        <div class="footer_social_area mt-15">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Footer Area -->
+                <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                    <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                        <div class="footer_heading mb-4">
+                            <h6>Informacion</h6>
+                        </div>
+                        <ul class="footer_widget_menu">
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Tu cuenta</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Tu carrito</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Politicas de devolucion</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Informacion de entrega</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Single Footer Area -->
+                <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                    <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                        <div class="footer_heading mb-4">
+                            <h6>Cuenta</h6>
+                        </div>
+                        <ul class="footer_widget_menu">
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Recuperacion de contraseña</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Ayuda</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Metodos de pago</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> Politicas de privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer_bottom_area" >
+            <div class="container">
+                <div class="row align-items-center" >
+                    <!-- Copywrite -->
+                    <div class="col-12 col-md-6">
+                        <div class="copywrite_text">
+                            <p>Creado por VICSHOP <i class="fa fa-heart" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'js/default/classy-nav.min.js'%}"></script>
+    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'js/default/scrollup.js'%}"></script>
+    <script src="{% static 'js/waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js'%}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+    <script src="{% static 'js/jquery-ui.min.js'%}"></script>
+    <script src="{% static 'js/jarallax.min.js'%}"></script>
+    <script src="{% static 'js/jarallax-video.min.js'%}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js'%}"></script>
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/default/active.js'%}"></script>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            });
+
+            $('#FormProducto').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/formularioProducto/',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Excelente',
+                            text: response.message,
+                            didClose: function () {
+                                $('#nombreProducto').val('');
+                                $('#descripcionProducto').val('');
+                                $('#precioProducto').val('');
+                                $('#linkStripe').val('');
+                                $('#marca').val('');
+                                $('#color').val('');
+                                $('#talla').val('');
+                                $('#imagen').val('');
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function (xhr, errmsg, err) {
+                        var errorResponse = xhr.responseJSON;
+                        if (errorResponse && errorResponse.error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: errorResponse.error
+                            });
+                        } else {
+                            console.log(err);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+       $(document).ready(function () {
+         $('#TablaProducto').DataTable({
+           lengthMenu: [3],
+           pageLength: 3,
+           destroy:true,
+           "language": {
+               lengthMenu: "Mostrar _MENU_ registros por pagina",
+               zeroRecords: "Ningún producto encontrado",
+               info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ productos",
+               infoEmpty: "Ningún producto encontrado",
+               infoFiltered: "(filtrados desde _MAX_ productos totales)",
+               search: "Buscar:",
+               loadingRecords: "Cargando... ",
+               paginate: {
+                   first: "Primero",
+                   last: "Ultimo",
+                   next: "Siguiente",
+                   previous: "Anterior"
+               }
+
+             }
+           // Otras opciones y configuraciones de DataTables que puedas tener...
+         });
+       });
+
+   </script>
+
+    <script>
+        function editarProducto(claveProducto, nuevoNombre, nuevaDescripcion, nuevoPrecio, nuevoLink) {
+            Swal.fire({
+                title: 'Editar producto',
+                html: 
+                    '<div class="my-swal-label-container">' +
+                        '<div class="row">' +
+                            '<div class="col-12">' +
+                                '<li class="my-swal-list-item"> <span class="my-swal-label">Clave:</span>' +
+                                    '<div class="my-swal-input-container">' +
+                                        '<input id="claveProducto" name="claveProducto" class="swal2-input my-swal-input" value="' + claveProducto + '" disabled>' +
+                                    '</div>' +
+                                '</li>' +
+                                '<li class="my-swal-list-item"> <span class="my-swal-label">Nombre producto:</span>' +
+                                    '<div class="my-swal-input-container">' +
+                                        '<input id="nuevoNombre" name="nuevoNombre" class="swal2-input my-swal-input" maxlength="45" value="' + nuevoNombre + '">' +
+                                    '</div>' +
+                                '</li>' +
+                                '<li class="my-swal-list-item"><span class="my-swal-label">Descripción:</span>' +
+                                    '<div class="my-swal-input-container">' +
+                                        '<input id="nuevaDescripcion" name="nuevaDescripcion" class="swal2-input my-swal-input" maxlength="45" value="' + nuevaDescripcion + '">' +
+                                    '</div>' +
+                                '</li>' +
+                                '<li class="my-swal-list-item"><span class="my-swal-label">Precio:</span>' +
+                                    '<div class="my-swal-input-container">' +
+                                        '<input id="nuevoPrecio" name="nuevoPrecio" class="swal2-input my-swal-input" maxlength="45" value="' + nuevoPrecio + '">' +
+                                    '</div>' +
+                                '</li>' +
+                                '<li class="my-swal-list-item"><span class="my-swal-label">Link:</span>' +
+                                    '<div class="my-swal-input-container">' +
+                                        '<input id="nuevoLink" name="nuevoLink" class="swal2-input my-swal-input" maxlength="45" value="' + nuevoLink + '">' +
+                                    '</div>' +
+                                '</li>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>',
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Aceptar',
+                cancelButtonText: 'Cancelar',
+                allowOutsideClick: false,
+                customClass: {
+                    container: 'my-swal-container2',
+                    popup: 'my-swal-popup2',
+                    title: 'my-swal-title2',
+                    input: 'my-swal-input2',
+                    cancelButton: 'my-swal-cancel-button2',
+                    confirmButton: 'my-swal-confirm-button2',
+                },
+                preConfirm: () => {
+                    const nuevoNombre = Swal.getPopup().querySelector('#nuevoNombre').value;
+                    const claveProducto = Swal.getPopup().querySelector('#claveProducto').value;
+                    const nuevaDescripcion = Swal.getPopup().querySelector('#nuevaDescripcion').value;
+                    const nuevoPrecio = Swal.getPopup().querySelector('#nuevoPrecio').value;
+                    const nuevoLink = Swal.getPopup().querySelector('#nuevoLink').value;
+
+                    return fetch('{% url 'formularioProducto' %}', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken'),
+                        },
+                        body: JSON.stringify({
+                            claveProducto: claveProducto,
+                            nuevoNombre: nuevoNombre,
+                            nuevaDescripcion: nuevaDescripcion,
+                            nuevoPrecio: nuevoPrecio,
+                            nuevoLink: nuevoLink,
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            Swal.showValidationMessage(`Error: ${data.error}`);
+                        } else {
+                            Swal.fire({
+                                icon: 'success',
+                                title: data.message,
+                            }).then(() => {
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        function getCookie(name) {
+            const cookieValue = document.cookie
+                .split('; ')
+                .find(row => row.startsWith(name + '='))
+                ?.split('=')[1];
+            return cookieValue ? decodeURIComponent(cookieValue) : null;
+        }
+    </script>
+
+
+
+</body>
+
+
+</html>

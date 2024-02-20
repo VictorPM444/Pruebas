@@ -1,0 +1,686 @@
+{% include 'includeFases.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <body>
+    
+    <!-- Breadcumb Area -->
+    <div class="breadcumb_area">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <h5>Graficas Formulario</h5>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active">Graficas Formulario</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Breadcumb Area -->
+
+    <!-- Cart Area -->
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-12">
+          <!-- Biblioteca de las gráficas (Chart.js) -->
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+          <div class="container">
+            <div class="row">
+              <!-- Pregunta 1 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Qué busca en una tienda online?
+                    <p></p>
+                  </div>
+
+                  <div class="card-body">
+                    <canvas id="pregunta1" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- Pregunta 2 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Qué forma de pago desea tener en una tienda online?
+                  </div>
+                  <div class="card-body">
+                    <canvas id="pregunta2" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- Pregunta 3 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿En que dispositivos visita mas una tienda online?
+                  </div>
+                  <div class="card-body">
+                    <canvas id="pregunta3" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Pregunta 4 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Qué tipo de calzado busca con mas frecuencia?
+                  </div>
+                  <div class="card-body">
+                    <canvas id="pregunta4" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- Pregunta 5 -->
+              <div class="col-lg-8 col-md-12 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Qué métodos de búsqueda prefiere para un tienda de calzado
+                    online?
+                    <p></p>
+                  </div>
+
+                  <div class="card-body">
+                    <canvas id="pregunta5" width="800" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Pregunta 6 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Se basa de las opiniones y calificaciones de los demás para
+                    definir si comprar o no un producto online?
+                  </div>
+                  <div class="card-body">
+                    <canvas id="pregunta6" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- Pregunta 7 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Cómo prefieres la vista de productos online?
+                    <p></p>
+                  </div>
+
+                  <div class="card-body">
+                    <canvas id="pregunta7" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- Pregunta 8 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Qué le gustaría tener por el uso y compra de productos
+                    online?
+                    <p></p>
+                  </div>
+
+                  <div class="card-body">
+                    <canvas id="pregunta8" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Pregunta 9 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Te gustaría recibir notificaciones o avisos sobre ofertas y
+                    promociones?
+                  </div>
+                  <div class="card-body">
+                    <canvas id="pregunta9" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- Pregunta 10 -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    ¿Qué método de registro prefieres en tiendas online?
+                  </div>
+                  <div class="card-body">
+                    <canvas id="pregunta10" width="400" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cart Area End -->
+
+    <!-- Footer Area -->
+    <footer class="footer_area section_padding_70_0" >
+      <div class="container" style="height: 220px; margin-bottom: 40px;">
+          <div class="row">
+              <!-- Single Footer Area -->
+              <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3" >
+                  <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                      <div class="footer_heading mb-4">
+                          <h6>Contacto</h6>
+                      </div>
+                      <ul class="footer_content">
+                          <li><span>Direcccion:</span> Lords, London, UK - 1259</li>
+                          <li><span>Telefono:</span> 002 63695 24624</li>
+                          <li><span>Correo:</span> support@example.com</li>
+                      </ul>
+                      <div class="footer_social_area mt-15">
+                          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                          <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Single Footer Area -->
+              <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                  <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                      <div class="footer_heading mb-4">
+                          <h6>Informacion</h6>
+                      </div>
+                      <ul class="footer_widget_menu">
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Tu cuenta</a></li>
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Tu carrito</a></li>
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Politicas de devolucion</a></li>
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Informacion de entrega</a></li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Single Footer Area -->
+              <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
+                  <div class="single_footer_area mb-100" style="margin-top: 30px;">
+                      <div class="footer_heading mb-4">
+                          <h6>Cuenta</h6>
+                      </div>
+                      <ul class="footer_widget_menu">
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Recuperacion de contraseña</a></li>
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Ayuda</a></li>
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Metodos de pago</a></li>
+                          <li><a href="#"><i class="icofont-rounded-right"></i> Politicas de privacidad</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer_bottom_area" >
+          <div class="container">
+              <div class="row align-items-center" >
+                  <!-- Copywrite -->
+                  <div class="col-12 col-md-6">
+                      <div class="copywrite_text">
+                          <p>Creado por VICSHOP <i class="fa fa-heart" aria-hidden="true"></i></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+  <!-- Footer Area -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'js/default/classy-nav.min.js'%}"></script>
+    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'js/default/scrollup.js'%}"></script>
+    <script src="{% static 'js/waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js'%}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+    <script src="{% static 'js/jquery-ui.min.js'%}"></script>
+    <script src="{% static 'js/jarallax.min.js'%}"></script>
+    <script src="{% static 'js/jarallax-video.min.js'%}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js'%}"></script>
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/default/active.js'%}"></script>
+    <!-- Código JavaScript para crear la gráfica -->
+    <!--Grafica 1-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx1 = document.getElementById('pregunta1').getContext('2d');
+
+      // Ajusta la altura del lienzo para hacerlo más alto
+      ctx1.canvas.height = 400; // Cambia el valor según tus necesidades
+
+
+      // Crea un gráfico de pastel
+      var grafico1 = new Chart(ctx1, {
+          type: 'pie',
+          data: {
+              labels: {{ etiquetasPregunta1|safe }},
+              datasets: [{
+                  data: {{ valoresPregunta1|safe }},
+                  backgroundColor: [
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(192, 75, 75, 0.2)',
+                      'rgba(75, 75, 192, 0.2)',
+                      'rgba(192, 192, 75, 0.2)',
+                      'rgba(192, 75, 192, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(192, 75, 75, 1)',
+                      'rgba(75, 75, 192, 1)',
+                      'rgba(192, 192, 75, 1)',
+                      'rgba(192, 75, 192, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          }
+      });
+    </script>
+
+    <!--Grafica 2-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx2 = document.getElementById('pregunta2').getContext('2d');
+
+      // Ajusta la altura del lienzo para hacerlo más alto
+      ctx2.canvas.height = 400; // Cambia el valor según tus necesidades
+
+      // Datos de ejemplo (reemplaza con tus datos)
+      var etiquetasPregunta2 = {{ etiquetasPregunta2| safe }};
+      var valoresPregunta2 = {{ valoresPregunta2| safe }};
+
+      // Colores para las barras y etiquetas
+      var coloresBarras = ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)'];
+      var coloresEtiquetas = ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'];
+
+      // Crea un gráfico de barras
+      var grafico2 = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+              labels: etiquetasPregunta2, // Etiquetas para cada barra
+              datasets: [{
+                  data: valoresPregunta2,
+                  backgroundColor: coloresBarras, // Colores para las barras
+                  borderColor: coloresBarras, // Colores de borde de las barras
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              },
+              plugins: {
+                  legend: {
+                      display: false // Oculta la leyenda
+                  }
+              }
+          }
+      });
+
+      // Personaliza las etiquetas con los colores correspondientes
+      var legendContainer = document.getElementById('pregunta2-legend'); // Contenedor personalizado para las etiquetas
+      etiquetasPregunta2.forEach(function(etiqueta, index) {
+          var label = document.createElement('div');
+          label.className = 'legend-label';
+          label.innerHTML = '<span class="legend-color" style="background-color:' + coloresBarras[index] + '"></span>' + etiqueta;
+          legendContainer.appendChild(label);
+      });
+    </script>
+
+    <!--Grafica 3-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx3 = document.getElementById('pregunta3').getContext('2d');
+
+      // Crea un gráfico de porcentaje
+      var grafico3 = new Chart(ctx3, {
+          type: 'pie', // Tipo de gráfico de porcentaje
+          data: {
+              labels: {{ etiquetasPregunta3| safe }}, // Etiquetas de las secciones del porcentaje
+              datasets: [{
+                  data: {{ valoresPregunta3| safe }}, // Valores de las secciones del porcentaje
+                  backgroundColor: [
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(153, 102, 255, 0.2)', // Color de la cuarta sección
+                      // Agrega más colores si es necesario
+                  ],
+                  borderColor: [
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(153, 102, 255, 1)',
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              maintainAspectRatio: false
+          }
+      });
+    </script>
+
+    <!--Grafica 4-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx4 = document.getElementById('pregunta4').getContext('2d');
+
+      // Ajusta la altura del lienzo para hacerlo más alto
+      ctx4.canvas.height = 400; // Cambia el valor según tus necesidades
+
+      // Crea un gráfico de línea
+      var grafico4 = new Chart(ctx4, {
+          type: 'line', // Cambia el tipo de gráfico a línea
+          data: {
+              labels: {{ etiquetasPregunta4| safe }}, // Reemplaza con tus etiquetas
+              datasets: [{
+                  label: 'Valor',
+                  data: {{ valoresPregunta4| safe }}, // Reemplaza con tus valores
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1,
+                  fill: true
+              }]
+          },
+          options: {
+              scales: {
+                  x: {
+                      title: {
+                          display: true,
+                          text: 'Eje X' // Título para el eje X (personalízalo)
+                      }
+                  },
+                  y: {
+                      title: {
+                          display: true,
+                          text: 'Eje Y' // Título para el eje Y (personalízalo)
+                      }
+                  }
+
+              }
+          }
+      });
+    </script>
+
+    <!--Grafica 5-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx5 = document.getElementById('pregunta5').getContext('2d');
+
+      // Ajusta la altura del lienzo para hacerlo más alto
+      ctx5.canvas.height = 360; // Cambia el valor según tus necesidades
+
+      // Datos de ejemplo para pregunta5 (reemplaza con tus datos)
+      var etiquetasPregunta5 = {{ etiquetasPregunta5| safe }};
+      var valoresPregunta5 = {{ valoresPregunta5| safe }};
+
+      // Colores para las barras y etiquetas
+      var coloresBarras = ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)'];
+      var coloresEtiquetas = ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'];
+
+      // Crea un gráfico de barras
+      var grafico5 = new Chart(ctx5, {
+          type: 'bar',
+          data: {
+              labels: etiquetasPregunta5, // Etiquetas para cada barra
+              datasets: [{
+                  data: valoresPregunta5,
+                  backgroundColor: coloresBarras, // Colores para las barras
+                  borderColor: coloresBarras, // Colores de borde de las barras
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              },
+              plugins: {
+                  legend: {
+                      display: false // Oculta la leyenda
+                  }
+              }
+          }
+      });
+
+      // Personaliza las etiquetas con los colores correspondientes
+      var legendContainer = document.getElementById('pregunta5-legend'); // Contenedor personalizado para las etiquetas
+      etiquetasPregunta5.forEach(function (etiqueta, index) {
+          var label = document.createElement('div');
+          label.className = 'legend-label';
+          label.innerHTML = '<span class="legend-color" style="background-color:' + coloresBarras[index] + '"></span>' + etiqueta;
+          legendContainer.appendChild(label);
+      });
+    </script>
+
+    <!--Grafica 6-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx6 = document.getElementById('pregunta6').getContext('2d');
+
+      // Ajusta la altura del lienzo para hacerlo más alto
+      ctx6.canvas.height = 400; // Cambia el valor según tus necesidades
+
+      // Datos de ejemplo para pregunta6 (reemplaza con tus datos)
+      var etiquetasPregunta6 = {{ etiquetasPregunta6| safe }};
+      var valoresPregunta6 = {{ valoresPregunta6| safe }};
+
+      // Colores para las barras y etiquetas
+      var coloresBarras = ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)'];
+      var coloresEtiquetas = ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'];
+
+      // Crea un gráfico de barras
+      var grafico6 = new Chart(ctx6, {
+          type: 'bar',
+          data: {
+              labels: etiquetasPregunta6, // Etiquetas para cada barra
+              datasets: [{
+                  data: valoresPregunta6,
+                  backgroundColor: coloresBarras, // Colores para las barras
+                  borderColor: coloresBarras, // Colores de borde de las barras
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              },
+              plugins: {
+                  legend: {
+                      display: false // Oculta la leyenda
+                  }
+              }
+          }
+      });
+
+      // Personaliza las etiquetas con los colores correspondientes
+      var legendContainer = document.getElementById('pregunta6-legend'); // Contenedor personalizado para las etiquetas
+      etiquetasPregunta6.forEach(function(etiqueta, index) {
+          var label = document.createElement('div');
+          label.className = 'legend-label';
+          label.innerHTML = '<span class="legend-color" style="background-color:' + coloresBarras[index] + '"></span>' + etiqueta;
+          legendContainer.appendChild(label);
+      });
+    </script>
+
+    <!--Grafica 7-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx7 = document.getElementById('pregunta7').getContext('2d');
+
+      // Ajusta la altura del lienzo para hacerlo más alto
+      ctx7.canvas.height = 400; // Cambia el valor según tus necesidades
+
+      // Datos de ejemplo para pregunta7 (reemplaza con tus datos)
+      var etiquetasPregunta7 = {{ etiquetasPregunta7| safe }};
+      var valoresPregunta7 = {{ valoresPregunta7| safe }};
+
+      // Colores para las barras y etiquetas
+      var coloresBarras = ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)'];
+      var coloresEtiquetas = ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'];
+
+      // Crea un gráfico de barras
+      var grafico7 = new Chart(ctx7, {
+          type: 'bar',
+          data: {
+              labels: etiquetasPregunta7, // Etiquetas para cada barra
+              datasets: [{
+                  data: valoresPregunta7,
+                  backgroundColor: coloresBarras, // Colores para las barras
+                  borderColor: coloresBarras, // Colores de borde de las barras
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              },
+              plugins: {
+                  legend: {
+                      display: false // Oculta la leyenda
+                  }
+              }
+          }
+      });
+
+      // Personaliza las etiquetas con los colores correspondientes
+      var legendContainer = document.getElementById('pregunta7-legend'); // Contenedor personalizado para las etiquetas
+      etiquetasPregunta7.forEach(function(etiqueta, index) {
+          var label = document.createElement('div');
+          label.className = 'legend-label';
+          label.innerHTML = '<span class="legend-color" style="background-color:' + coloresBarras[index] + '"></span>' + etiqueta;
+          legendContainer.appendChild(label);
+      });
+    </script>
+
+    <!--Grafica 8-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx8 = document.getElementById('pregunta8').getContext('2d');
+
+      // Ajusta la altura del lienzo para hacerlo más alto
+      ctx8.canvas.height = 400; // Cambia el valor según tus necesidades
+
+      // Crea un gráfico de línea
+      var grafico8 = new Chart(ctx8, {
+          type: 'line', // Cambia el tipo de gráfico a línea
+          data: {
+              labels: {{ etiquetasPregunta8| safe }}, // Reemplaza con tus etiquetas
+              datasets: [{
+                  label: 'Valor',
+                  data: {{ valoresPregunta8| safe }}, // Reemplaza con tus valores
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1,
+                  fill: true
+              }]
+          },
+          options: {
+              scales: {
+                  x: {
+                      title: {
+                          display: true,
+                          text: 'Eje X' // Título para el eje X (personalízalo)
+                      }
+                  },
+                  y: {
+                      title: {
+                          display: true,
+                          text: 'Eje Y' // Título para el eje Y (personalízalo)
+                      }
+                  }
+              }
+
+          }
+      });
+    </script>
+
+    <!--Grafica 9-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx9 = document.getElementById('pregunta9').getContext('2d');
+
+      // Crea un gráfico de dona
+      var grafico9 = new Chart(ctx9, {
+          type: 'doughnut', // Cambia el tipo de gráfico a dona
+          data: {
+              labels: {{ etiquetasPregunta9| safe }},
+              datasets: [{
+                  label: 'Cantidad',
+                  data: {{ valoresPregunta9| safe }},
+                  backgroundColor: [
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(153, 102, 255, 0.2)', // Puedes agregar más colores si lo deseas
+                  ],
+                  borderColor: [
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(153, 102, 255, 1)',
+                  ],
+                  borderWidth: 1
+              }]
+          }
+      });
+    </script>
+
+    <!--Grafica 10-->
+    <script>
+      // Obtén el contexto del lienzo (canvas) donde se dibujará el gráfico
+      var ctx10 = document.getElementById('pregunta10').getContext('2d');
+
+      // Crea un gráfico de pastel
+      var grafico10 = new Chart(ctx10, {
+          type: 'pie', // Cambia el tipo de gráfico a pastel
+          data: {
+              labels: {{ etiquetasPregunta10| safe }},
+              datasets: [{
+                  label: 'Cantidad',
+                  data: {{ valoresPregunta10| safe }},
+                  backgroundColor: [
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(153, 102, 255, 0.2)', // Puedes agregar más colores si lo deseas
+                  ],
+                  borderColor: [
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(153, 102, 255, 1)',
+                  ],
+                  borderWidth: 1
+              }]
+          }
+      });
+    </script>
+  </body>
+
+  <!-- Mirrored from designing-world.com/bigshop-2.3.0/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 08:04:41 GMT -->
+</html>
