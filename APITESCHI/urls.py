@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from api.views import (
     login,
     recuperacion_contra,
-    home,
+    index,
     my_account,
     account_details,
     addresses,
@@ -50,7 +50,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     # se crea, el path de vista con el home creado nombrandolo login
     path("login/", login.as_view(), name="login"),
-    path("", home.as_view(), name="home"),
+    path("", index.as_view(), name="index"),
     path("my_account/", my_account.as_view(), name="my_account"),
     path("formularioColor/", formularioColor.as_view(), name="formularioColor"),
     path("formularioMarca/", formularioMarca.as_view(), name="formularioMarca"),

@@ -107,7 +107,7 @@ class login(APIView):
                     # Asigna los campos y columnas correspondientes
                 )
                 nuevo_registro.save()
-        return render(request, 'home.html') """
+        return render(request, 'index.html') """
         ###########Importacion de datos desde CSV###################
 
 
@@ -133,7 +133,7 @@ class login(APIView):
                 # La contraseña es correcta, inicia sesión
                 # login(request, usuario)
                 if check_password(password1, contra):
-                    return redirect("home")  # Redirige a la página 'home' después del inicio de sesión
+                    return redirect("index")  # Redirige a la página 'index' después del inicio de sesión
                 else:
                     mensaje = "Credenciales incorrectas. Por favor, inténtalo de nuevo."
                     return render(request, self.template_name, {"error": mensaje})
@@ -192,7 +192,7 @@ class login(APIView):
                                 recipient_list,
                                 html_message=html_message,
                             )
-                            return redirect("home")
+                            return redirect("index")
 
                         else:
                             contra_diff = "La contraseña no es la misma. Por favor, reintente de nuevo."
@@ -211,8 +211,8 @@ class login(APIView):
         return render(request, self.template_name)
 
 
-class home(APIView):
-    template_name = "home.html"
+class index(APIView):
+    template_name = "index.html"
 
     def get(self, request):
 
