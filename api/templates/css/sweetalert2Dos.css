@@ -1,0 +1,80 @@
+
+
+    /* Estilo para el contenedor principal de la modal */
+    .my-swal-container2 {
+        background-color: #fff;
+        border-radius: 10px;
+        /* overflow: hidden; Elimina o ajusta esta línea según sea necesario */
+    }
+    
+    /* Estilo para el contenido de la modal */
+    .my-swal-popup2 {
+    border: 2px solid #821144;
+    border-radius: 10px;
+    align-items: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ajusta según sea necesario */
+    width: 390px;
+    }
+
+    
+    /* Estilo para el título de la modal */
+    .my-swal-title2 {
+        font-size: 20px; /* Tamaño de fuente del título */
+        color: #333; /* Color del texto del título */
+        margin-bottom: 15px;
+    }
+
+    /* Estilo para la etiqueta y el input en la modal */
+    .my-swal-list-item2 {
+        list-style: none; /* Quitar viñetas de la lista */
+        margin-bottom: 10px; /* Espaciado entre elementos de la lista */
+        align-items: start;
+        text-align:start;
+        width: 100%; /* Esto permite que el ancho sea 100% del contenedor */
+    }
+
+    .my-swal-label2 {
+        display: inline-block;
+        align-items: start;
+        width: 150px; /* Ancho de la etiqueta */
+        font-weight: bold; /* Negrita para la etiqueta */
+        font-size: 16px; /* Tamaño de fuente del título */
+
+    }
+
+    .my-swal-input-container2 {
+        display: static;
+        width: 100%; /* Esto permite que el ancho sea 100% del contenedor */
+    }
+
+    .my-swal-input2 {
+        width: 230px; /* Esto permite que el ancho sea 100% del contenedor */ 
+        font-size: 18px; /* Tamaño de fuente del título */
+        height: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    /* Estilo para los botones de la modal */
+    .my-swal-cancel-button2,
+    .my-swal-confirm-button2 {
+        padding: 10px 20px; /* Espaciado interno del botón */
+        margin: 0 5px; /* Espaciado entre botones */
+        border: none; /* Quitar borde del botón */
+        border-radius: 5px; /* Radio de borde para esquinas redondeadas */
+        cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    }
+
+    .my-swal-cancel-button2 {
+        background-color: #ff0000; /* Color de fondo del botón Cancelar */
+        color: #ffffff; /* Color del texto del botón Cancelar */
+    }
+
+    .my-swal-confirm-button2 {
+        background-color: #4caf50; /* Color de fondo del botón Aceptar */
+        color: #fff; /* Color del texto del botón Aceptar */
+    }
