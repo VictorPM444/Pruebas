@@ -127,7 +127,6 @@ class login(APIView):
 
             # usuario = authenticate(request, correElectronico=email, password=password1)
 
-            
 
             if valorObtenido is not None:
                 # La contraseña es correcta, inicia sesión
@@ -663,8 +662,5 @@ class recuperacion_contra(APIView):
 
     def get(self, request):
         return render(request, self.template_name)
-
-
-
 
     
